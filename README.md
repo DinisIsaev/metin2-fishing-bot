@@ -37,7 +37,7 @@ Packages:
 How to use:
 
 1. Clone repo (duh)
-2. Pip install all refered packages
+2. Pip install all refered packages on .venv folder
 3. Access cmd with admin privileges
 4. Cd to this repo
 5. Type .venv\Scripts\activate
