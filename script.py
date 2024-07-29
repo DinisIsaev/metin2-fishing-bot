@@ -56,8 +56,10 @@ while True:
         pydirectinput.keyUp('2')
         pydirectinput.keyDown('1')
         pydirectinput.keyUp('1')
+    '''
     #Testing part to see image processing
     cv2.imshow('screen', masked_save)
     if (cv2.waitKey(1) & 0xFF) == ord('q'):
         cv2.destroyAllWindows()
         break
+    '''
