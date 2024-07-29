@@ -33,7 +33,6 @@ Packages:
 3. pypiwin32
 4. pydirectinput
 5. mss
-6. time
 
 How to use:
 

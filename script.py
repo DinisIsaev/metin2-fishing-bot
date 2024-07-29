@@ -1,6 +1,5 @@
 import win32api
 import win32con
-import time
 import cv2
 import numpy as np
 import pydirectinput
