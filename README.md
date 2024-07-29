@@ -15,9 +15,9 @@ Challenges:
 
 Solutions:
 
-1. Apply color filters to detect the fish in a cropped screenshot
+1. Apply masks to highlight the fish in a cropped screenshot
 2. Mask a radius inside the area
-3. Use mouse library
+3. Use win32api library
 4. Don't know yet (maybe will opt for timers)
 5. Use kb input library
 
@@ -27,3 +27,5 @@ Packages:
 2. CV2
 3. Mouse
 4. Some random kb input library
+
+How to use:
