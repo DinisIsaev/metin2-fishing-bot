@@ -9,16 +9,21 @@ Challenges:
 
 1. Detect fish
 2. Detect when fish in area
-3. Reput bait
+3. Click on fish
+4. Detect when a fish has been caught
+5. Reput bait
 
 Solutions:
 
-1. Apply color filters to detect the fish
-2. Don't know yet
-3. Don't know yet
+1. Apply color filters to detect the fish in a cropped screenshot
+2. Mask a radius inside the area
+3. Use mouse library
+4. Don't know yet (maybe will opt for timers)
+5. Use kb input library
 
 Packages:
 
 1. Numpy
 2. CV2
 3. Mouse
+4. Some random kb input library
