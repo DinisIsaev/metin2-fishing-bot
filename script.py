@@ -44,9 +44,7 @@ while True:
     if points is not None:
         win32api.SetCursorPos((points[0][0][0]+837, points[0][0][1]+452))
         win32api.mouse_event(win32con.MOUSEEVENTF_LEFTDOWN, 0, 0)
-        time.sleep(0.1)
         win32api.mouse_event(win32con.MOUSEEVENTF_LEFTUP, 0, 0)
-        time.sleep(0.1)
     elif points is None and cv2.findNonZero(masked_save[:,:,0]) is None:
         pydirectinput.keyDown('ctrl')
         pydirectinput.keyDown('g')
@@ -58,7 +56,6 @@ while True:
         pydirectinput.keyUp('2')
         pydirectinput.keyDown('1')
         pydirectinput.keyUp('1')
-        time.sleep(1)
     #Testing part to see image processing
     cv2.imshow('screen', masked_save)
     if (cv2.waitKey(1) & 0xFF) == ord('q'):
