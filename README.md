@@ -1,8 +1,9 @@
-# metin2-test
+# metin2-fishing-bot
 
-Trying to automate fishing game task
+Automatic fishing bot
 
 Description:
+
 In the game 'metin2' there's a fishing minigame, where you have to click a fish 3 times when the fish is in a specific area. I intend to automate this task using my knowledge in problem solving.
 
 Challenges:
