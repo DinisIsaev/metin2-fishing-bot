@@ -86,7 +86,7 @@ while True:
 
 
     '''
-    cv2.imshow("test", worm_slot)
+    cv2.imshow("test", worm1_slot)
     if (cv2.waitKey(1) & 0xFF) == ord('q'):
         cv2.destroyAllWindows()
         break
