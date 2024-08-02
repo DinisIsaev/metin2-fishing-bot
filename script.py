@@ -9,8 +9,8 @@ import os
 
 minigame_box = {'top': 452, 'left': 837, 'width': 248, 'height': 197}
 inventory_box = {'top': 725, 'left': 1750, 'width': 165, 'height': 290}
+worm_box = {'top': 1044, 'left': 906, 'width': 32, 'height': 32}
 sct = mss()
-worm = False
 
 while True:
     #Grab fish screen
@@ -40,6 +40,23 @@ while True:
     elif cv2.findNonZero(masked_save[:,:,0]) is None:
         inventory_rec = sct.grab(inventory_box)
         inventory_rec = cv2.cvtColor(np.array(inventory_rec), cv2.COLOR_BGR2RGB) 
+        worm_template = cv2.imread("worm.png")
+        worm_template = cv2.cvtColor(np.array(worm_template), cv2.COLOR_BGR2RGB)
+        worm_slot_rec = sct.grab(worm_box)
+        worm_slot_rec = cv2.cvtColor(np.array(worm_slot_rec), cv2.COLOR_BGR2RGB)
+        res = cv2.matchTemplate(worm_slot_rec, worm_template, cv2.TM_CCOEFF_NORMED)
+        if not np.any(res > 0.9):
+            res = cv2.matchTemplate(inventory_rec, worm_template, cv2.TM_CCOEFF_NORMED)
+            if np.any(res > 0.9):
+                worm_location = np.where( res >= 0.9)
+                for worm in zip(*worm_location):
+                    win32api.SetCursorPos((worm[1]+1755, worm[0]+740))
+                    pydirectinput.keyDown("ctrl")
+                    win32api.mouse_event(win32con.MOUSEEVENTF_LEFTDOWN, 0, 0)
+                    win32api.mouse_event(win32con.MOUSEEVENTF_LEFTUP, 0, 0)
+                    pydirectinput.keyUp("ctrl")
+            else:
+                break
         for i in range(16):
             file = str(i+1)+".png"
             fish_img = cv2.imread(file)
@@ -48,7 +65,6 @@ while True:
             if np.any(res > 0.9):
                 fish_location = np.where( res >= 0.9)
                 for fish in zip(*fish_location):
-                    #cv2.rectangle(inventory_rec, fish, (fish[1] + fish_img.shape[::-1][0], fish[0] + fish_img.shape[::-1][1]),(0, 255, 255), 2 )
                     win32api.SetCursorPos((fish[1]+1755, fish[0]+740))
                     time.sleep(0.1)
                     win32api.mouse_event(win32con.MOUSEEVENTF_RIGHTDOWN, 0, 0)
@@ -61,17 +77,16 @@ while True:
         pydirectinput.keyDown("g")
         pydirectinput.keyUp("g")
         pydirectinput.keyUp("ctrl")
-        #if not worm:
-            #time.sleep(0.25)
+        time.sleep(0.25)
         pydirectinput.keyDown('2')
         pydirectinput.keyUp('2')
-            #worm = True
         time.sleep(0.25)
         pydirectinput.keyDown('1')
         pydirectinput.keyUp('1')
-    
+
+
     '''
-    cv2.imshow("test", inventory_rec)
+    cv2.imshow("test", worm_slot)
     if (cv2.waitKey(1) & 0xFF) == ord('q'):
         cv2.destroyAllWindows()
         break
